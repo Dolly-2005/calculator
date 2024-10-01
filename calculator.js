@@ -9,16 +9,24 @@ function deleteLast(){
 }
 
 function appendChar(char){
-    const display=document.getElementById("display");
-    display.value+=char;
+    const display = document.getElementById("display");
+    const lastChar = display.value.slice(-1);
+    if (['+', '-', '*', '/', '.', '%'].includes(lastChar) && ['+', '-', '*', '/', '.', '%'].includes(char)) {
+        return;
+    }
+
+    display.value += char;
 }
 
-function calculate(){
-    try{
-        const display=document.getElementById("display");
-        display.value=eval(display.value);
+function calculate() {
+    try {
+        const Display = document.getElementById("display")
+        Display.value = eval(Display.value)
     }
-    catch(error){
-        display.value="error"
+    catch (error) {
+        document.getElementById("display").value = "error"
     }
 }
+
+
+
